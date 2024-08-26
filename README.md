@@ -1,0 +1,1 @@
+# spdh-terraform-ecr
