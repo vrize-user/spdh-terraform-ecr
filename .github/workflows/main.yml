@@ -57,8 +57,7 @@ jobs:
       - name: Tag Docker image
         id: tag-image
         run: |
-          ECR_URL=$(terraform output -raw ecr_repository_url)
-          docker tag my_ecr_repo:latest $ECR_URL:latest
+          docker tag my_ecr_repo:latest 058264463085.dkr.ecr.us-east-2.amazonaws.com/my_ecr_repo:latest
 
       - name: Log in to Amazon ECR
         run: |
