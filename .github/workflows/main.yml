@@ -64,5 +64,4 @@ jobs:
           aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 058264463085.dkr.ecr.us-east-2.amazonaws.com
       - name: Push Docker image to ECR
         run: |
-          ECR_URL=$(terraform output -raw ecr_repository_url)
-          docker push $ECR_URL:latest
+          docker push 058264463085.dkr.ecr.us-east-2.amazonaws.com/my_ecr_repo:latest
