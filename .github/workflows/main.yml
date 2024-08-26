@@ -52,8 +52,8 @@ jobs:
         id: build-image
         run: |
           ECR_URL=$(terraform output -raw ecr_repository_url)
-          docker build -t myapp:latest .
-          docker tag myapp:latest $ECR_URL:latest
+          docker build -t my_ecr_repo:latest .
+          docker tag my_ecr_repo:latest $ECR_URL:latest
 
       - name: Log in to Amazon ECR
         run: |
