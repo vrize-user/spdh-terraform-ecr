@@ -48,11 +48,16 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
-      - name: Build and tag Docker image
+      - name: Build Docker image
         id: build-image
         run: |
           ECR_URL=$(terraform output -raw ecr_repository_url)
           docker build -t my_ecr_repo:latest .
+
+      - name: Tag Docker image
+        id: tag-image
+        run: |
+          ECR_URL=$(terraform output -raw ecr_repository_url)
           docker tag my_ecr_repo:latest $ECR_URL:latest
 
       - name: Log in to Amazon ECR
@@ -61,4 +66,5 @@ jobs:
 
       - name: Push Docker image to ECR
         run: |
-          docker push $(terraform output -raw ecr_repository_url):latest
+          ECR_URL=$(terraform output -raw ecr_repository_url)
+          docker push $ECR_URL:latest
