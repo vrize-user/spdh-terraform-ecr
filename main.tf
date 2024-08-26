@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 # Create ECR repository
-resource "aws_ecr_repository" "myapp" {
+resource "aws_ecr_repository" "my_ecr_repo" {
   name = "myapp"
 }
 
